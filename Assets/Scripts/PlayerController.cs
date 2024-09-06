@@ -25,11 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         
     }
-    
-    //for organization, put other built-in Unity functions here
-    
     
     
     
