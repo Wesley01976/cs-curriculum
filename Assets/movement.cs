@@ -19,10 +19,10 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xSpeed = 4;
+        xSpeed = 8;
         xDirection = 0;
         xVector = 0;
-        ySpeed = 4;
+        ySpeed = 8;
         yDirection = 0;
         yVector = 0;
 

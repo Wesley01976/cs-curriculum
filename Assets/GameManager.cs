@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    int coins;
+    public int coins;
     public static GameManager gm;
     private void Awake()
     {
