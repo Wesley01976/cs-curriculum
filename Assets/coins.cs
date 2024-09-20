@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class coins : MonoBehaviour
+public class Coins : MonoBehaviour
 {
 
     public GameManager gm;
@@ -20,8 +21,9 @@ public class coins : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
-
-    // Update is called once per frame
+    
+    
+    //
     void Update()
     {
         
