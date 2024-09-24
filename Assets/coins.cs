@@ -12,7 +12,7 @@ public class Coins : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             Object.Destroy(other.gameObject);
-            gm.coins += 1;
+            gm.AM_Coins();
             print("I have " + gm.coins + " coins!");
         }
     }
