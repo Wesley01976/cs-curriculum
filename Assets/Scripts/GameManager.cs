@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Timeline;
 using UnityEngine;
-
+using UnityEngine.Serialization;
 
 
 public class GameManager : MonoBehaviour
@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public static GameManager gm;
     private int health;
     private int max_health = 10;
-    public TextMeshProUGUI CoinText;
-    public TextMeshProUGUI HealthText;
+    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI healthText;
 
     private void Awake()
     {
@@ -32,14 +32,17 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        
-        CoinText.text = "Coins: " + coins.ToString();
+        health = max_health;
+        healthText.text = "Health: " + health;
+        coinText.text = "Coins: " + coins.ToString();
     }
 
     public void AM_Coins() 
     {
         coins += 1;
-        CoinText.text = "Coins: " + coins;
+        coinText.text = "Coins: " + coins;
+        
+        
         
     }
 
@@ -66,6 +69,8 @@ public class GameManager : MonoBehaviour
         {
             print("You Died!");
         }
+        
+        healthText.text = "Health: " + health;
     }
 
 

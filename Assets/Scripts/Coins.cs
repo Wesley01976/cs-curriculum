@@ -15,11 +15,15 @@ public class Coins : MonoBehaviour
             gm.AM_Coins();
             print("I have " + gm.coins + " coins!");
         }
+        if (other.CompareTag("Spikes"))
+        {
+            Health -= 1;
+        }
     }
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        gm = FindFirstObjectByType<GameManager>();
     }
     
     
