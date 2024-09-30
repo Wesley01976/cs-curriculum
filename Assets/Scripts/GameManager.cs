@@ -41,9 +41,11 @@ public class GameManager : MonoBehaviour
     {
         coins += 1;
         coinText.text = "Coins: " + coins;
-        
-        
-        
+    }
+    public void Change_Health(int hello) 
+    {
+        health += hello;
+        healthText.text = "Health: " + health;
     }
 
 // Update is called once per frame
