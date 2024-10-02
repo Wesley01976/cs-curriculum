@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 
@@ -66,12 +67,16 @@ public class GameManager : MonoBehaviour
         {
             health = max_health;
         }
-
-        if (health < 1)
+ if (health < 1)
         {
             print("You Died!");
+            coins = 0;
+            health = max_health;
+            SceneManager.LoadScene("Start");
+            Destroy(gameObject);
         }
-        
+       
+
         healthText.text = "Health: " + health;
     }
 
