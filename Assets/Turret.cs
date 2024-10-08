@@ -15,10 +15,11 @@ public class Turret : MonoBehaviour
     private int projectile;
     private float firerate = 2;
     public GameObject bulletprefab;
+    private int shoot;
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")&&cooldown<=0)
         {
             GameObject clone = Instantiate(bulletprefab, transform.position, quaternion.identity);
             Bullet script = clone.GetComponent<Bullet>();
@@ -30,5 +31,7 @@ public class Turret : MonoBehaviour
     private void Update()
     {
         cooldown -= Time.deltaTime;
+        
+        
     }
 }
