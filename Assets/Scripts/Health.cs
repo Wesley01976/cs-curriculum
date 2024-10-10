@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
         gm = FindFirstObjectByType<GameManager>();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Spikes"))
         {
