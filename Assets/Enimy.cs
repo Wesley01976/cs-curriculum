@@ -15,24 +15,26 @@ public class Enimy : MonoBehaviour
     private float _speed = 3f;
     private int currentPoint;
     public Vector3 targetPos;
-    public int icu=0;
+    public bool icu ;
 
 
     private void Start()
     {
         currentPoint = 0;
-        icu = 0;
+        
     }
 
     private void Update()
     {
+
+
+        if (!icu)
         {
-            if (icu<1)
-            {
+            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentPoint].position,_speed * Time.deltaTime);
+            _speed = 3f;
+        }
+            
                 
-            }
-            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentPoint].position,
-                _speed * Time.deltaTime);
             if (Vector2.Distance(transform.position, waypoints[currentPoint].position) < 0.2f)
             {
                 if (currentPoint < 2)
@@ -44,8 +46,7 @@ public class Enimy : MonoBehaviour
                     currentPoint = 0;
                 }
             }
-
-        }
+            
 
     }
 
@@ -53,15 +54,20 @@ public class Enimy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        icu = 1;
-        if (icu > 1)
+        if (other.gameObject.CompareTag("Player"))
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed * Time.deltaTime);
-            }
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed * Time.deltaTime);
+            targetPos = other.gameObject.transform.position;
+            icu = true;
+            _speed = 15f;
         }
+    }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            icu = false;
+        }
     }
 }
