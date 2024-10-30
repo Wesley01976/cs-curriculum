@@ -7,7 +7,7 @@ public class TopDown_EnemyAnimator : MonoBehaviour
     public bool IsAttacking { get; private set; }
 
     Vector3 prevPos;
-    Animator anim;
+    [SerializeField] Animator anim;
 
     // Start is called before the first frame update
     void Start()

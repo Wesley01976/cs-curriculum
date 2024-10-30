@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     private int max_health = 10;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI healthText;
-
     private void Awake()
     {
         if (gm != null && gm != this)
