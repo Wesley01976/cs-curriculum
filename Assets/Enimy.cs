@@ -68,7 +68,6 @@ public class Enimy : MonoBehaviour
                 Cooldown = 1;   
             }
         }
-        print(Cooldown);
         Cooldown -= Time.deltaTime;
     }
 
