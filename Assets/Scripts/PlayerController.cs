@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool overworld; 
-
+    private TopDown_AnimatorController animatorController;
+    public bool overworld;
+    GameManager gm;
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
+        animatorController = FindObjectOfType<TopDown_AnimatorController>();
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
         
@@ -20,6 +24,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             GetComponent<Rigidbody2D>().gravityScale = 1;
+        }
+    }
+
+    public void CheckAndSwitchWeapon()
+    {
+        if (gm.hasAxe)
+        {
+            animatorController.SwitchToAxe();
+        }
+        else
+        {
+            animatorController.SwitchToShovel();
         }
     }
 
