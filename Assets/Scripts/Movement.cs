@@ -15,49 +15,71 @@ public class Movement : MonoBehaviour
     float Horiziontal;
     public Transform trans;
     float Vertical;
-    public bool overworld;
+    public PlayerController playerController;
     private bool jump;
     private RaycastHit2D leftray;
     private RaycastHit2D rightray;
+    private Rigidbody2D rb;
     
 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerController = FindFirstObjectByType<PlayerController>();
         xSpeed = 8;
         xDirection = 0;
         xVector = 0;
-        ySpeed = 8;
+        ySpeed = 4;
         yDirection = 0;
         yVector = 0;
-
+        rb = GetComponent<Rigidbody2D>();
+        if (playerController.overworld)
+        {
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = 1;
+        }
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update() 
+    {
         xDirection = Input.GetAxis("Horizontal");
+        
         xVector= xSpeed * xDirection * Time.deltaTime;
-        trans.Translate(new Vector3(xVector, yVector, 0));
-        yDirection = Input.GetAxis("Vertical");
-        yVector = ySpeed * yDirection * Time.deltaTime;
+        
+        
+        
       
         leftray = Physics2D.Raycast(new Vector2(transform.position.x-trans.localScale.x/2,transform.position.y),-Vector2.up, 0.3f);
-        this.rightray = Physics2D.Raycast(new Vector2(transform.position.x+trans.localScale.x/2,transform.position.y),-Vector2.up, 0.3f);
-        if (overworld != true)
+        rightray = Physics2D.Raycast(new Vector2(transform.position.x+trans.localScale.x/2,transform.position.y),-Vector2.up, 0.3f);
+        
+        //TODO: we need to draw the ray and check the length. It is currently not touching the ground. Ask Ansell for help at the start of class.
+        
+        if (!playerController.overworld)
         {
             jump = Input.GetKeyDown(KeyCode.Space);
+            ySpeed = 0;
+            
+            if ((leftray.collider != null ||rightray.collider != null) && jump)
+            {
+                rb.AddForce(new Vector2(0, 7.5f), ForceMode2D.Impulse);
+            }
         }
-
-        xVector = Time.deltaTime * xSpeed * xDirection; 
-        yVector = Time.deltaTime * ySpeed * yDirection;
-        trans.Translate(new Vector3(xVector, yVector, 0));
-        leftray = Physics2D.Raycast (new Vector2(transform.position.x - trans. localScale.x / 3, transform.position.y), -Vector2.up, 0.9f);
-        this.rightray = Physics2D.Raycast (new Vector2(transform.position.x + trans. localScale.x/3, transform.position.y), -Vector2.up, 0.9f); 
-        if ((leftray.collider != null ||rightray.collider != null) && jump)
+        else
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 7.5f), ForceMode2D.Impulse);
+            yDirection = Input.GetAxis("Vertical");
+            ySpeed = 4;
+            yVector = ySpeed * yDirection * Time.deltaTime;
         }
+        
+        trans.Translate(new Vector3(xVector, yVector, 0));
+        
+        
+        
 
 
     }

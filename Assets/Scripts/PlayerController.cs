@@ -17,14 +17,7 @@ public class PlayerController : MonoBehaviour
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
         
         
-        if (overworld)
-        {
-            GetComponent<Rigidbody2D>().gravityScale = 0f;
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().gravityScale = 1;
-        }
+        //
     }
 
     public void CheckAndSwitchWeapon()
