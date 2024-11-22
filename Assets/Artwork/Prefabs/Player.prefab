@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8817025345248629567}
   - component: {fileID: 1283610988072705179}
   - component: {fileID: 7869803674047299266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8488252848716416645}
   - component: {fileID: 6505362006238366352}
   - component: {fileID: 30440995161992428}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -272,6 +272,8 @@ MonoBehaviour:
   xSpeed: 0
   ySpeed: 0
   trans: {fileID: 7819348094328437333}
+  playerController: {fileID: 0}
+  rayLength: 0
 --- !u!114 &6505362006238366352
 MonoBehaviour:
   m_ObjectHideFlags: 0

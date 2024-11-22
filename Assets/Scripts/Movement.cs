@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     private RaycastHit2D leftray;
     private RaycastHit2D rightray;
     private Rigidbody2D rb;
+    public float rayLength;
     
 
 
@@ -30,9 +31,11 @@ public class Movement : MonoBehaviour
         xSpeed = 8;
         xDirection = 0;
         xVector = 0;
-        ySpeed = 4;
+        ySpeed = 8;
         yDirection = 0;
         yVector = 0;
+        rayLength = 1;
+        
         rb = GetComponent<Rigidbody2D>();
         if (playerController.overworld)
         {
@@ -54,9 +57,10 @@ public class Movement : MonoBehaviour
         
         
       
-        leftray = Physics2D.Raycast(new Vector2(transform.position.x-trans.localScale.x/2,transform.position.y),-Vector2.up, 0.3f);
-        rightray = Physics2D.Raycast(new Vector2(transform.position.x+trans.localScale.x/2,transform.position.y),-Vector2.up, 0.3f);
+        leftray = Physics2D.Raycast(new Vector2(transform.position.x-trans.localScale.x/6,transform.position.y),Vector2.down, rayLength);
+        rightray = Physics2D.Raycast(new Vector2(transform.position.x+trans.localScale.x/6,transform.position.y),Vector2.down, rayLength);
         
+        Debug.DrawRay (new Vector2(transform.position.x+trans.localScale.x/6,transform.position.y),Vector2.down * rayLength);
         //TODO: we need to draw the ray and check the length. It is currently not touching the ground. Ask Ansell for help at the start of class.
         
         if (!playerController.overworld)
@@ -72,7 +76,7 @@ public class Movement : MonoBehaviour
         else
         {
             yDirection = Input.GetAxis("Vertical");
-            ySpeed = 4;
+            ySpeed = 8;
             yVector = ySpeed * yDirection * Time.deltaTime;
         }
         
