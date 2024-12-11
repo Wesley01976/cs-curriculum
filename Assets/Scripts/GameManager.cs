@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI healthText;
     public bool hasAxe;
+    public bool hasMonsterEnergy;
     private void Awake()
     {
         if (gm != null && gm != this)

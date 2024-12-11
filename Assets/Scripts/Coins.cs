@@ -16,6 +16,7 @@ public class Coins : MonoBehaviour
             print("I have " + gm.coins + " coins!");
         }
         
+        
     }
     // Start is called before the first frame update
     void Start()
