@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI healthText;
     public bool hasAxe;
     public bool hasMonsterEnergy;
+    public bool MonsterEnergyDranken = false;
     private void Awake()
     {
         if (gm != null && gm != this)
@@ -53,7 +54,15 @@ public class GameManager : MonoBehaviour
 // Update is called once per frame
     void Update()
     {
-    
+        if (gm.hasMonsterEnergy = true)
+        {
+            gm.MonsterEnergyDranken = Input.GetKeyDown(KeyCode.E);
+        }
+
+        if (gm.MonsterEnergyDranken = true)
+        {
+            gm.hasMonsterEnergy = false;
+        }
     }
 
     int gethealth()

@@ -9,25 +9,27 @@ public class Monster_Energy : MonoBehaviour
 {
 
     public GameManager gm;
-
-    private void Update()
-    {
+    
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Monster Energy"))
+            if (other.CompareTag("Player"))
             {
-                Object.Destroy(gameObject);
-                print("I AM SPEED!!!!!!!");
+                Destroy(gameObject);
                 gm.hasMonsterEnergy = true;
             }
         }
-    }
 
-    
+        private void Update()
+        {
+            print("Have:"+gm.hasMonsterEnergy);
+            print("Drank:"+gm.MonsterEnergyDranken);
+        }
 
-    // Start is called before the first frame update
+
+        // Start is called before the first frame update
     void Start()
     {
         gm = FindFirstObjectByType<GameManager>();
+        gm.hasMonsterEnergy = false;
     }
 }

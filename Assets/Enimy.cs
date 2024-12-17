@@ -95,13 +95,11 @@ public class Enimy : MonoBehaviour
             if (state == States.chase)
             {
                 state = States.attack;
-                print("enter attack");
             }
 
             if (state==States.patrol)
             {
                 state = States.chase;
-                print("enter chase");
             }
             
         }
@@ -114,7 +112,6 @@ public class Enimy : MonoBehaviour
             if (state == States.chase)
             {
                 state = States.patrol;
-                print("enter attack");
                 {
                     
                 }
@@ -123,7 +120,6 @@ public class Enimy : MonoBehaviour
             if (state==States.attack)
             {
                 state = States.chase;
-                print("enter chase");
             }
             
         }

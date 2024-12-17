@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    private float _speed = 2f;
+    private float _speed = 3f;
     public List<Transform> waypoints = new List<Transform>();
     private int currentPoint;
 

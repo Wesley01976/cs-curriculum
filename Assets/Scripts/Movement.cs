@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     private RaycastHit2D rightray;
     private Rigidbody2D rb;
     public float rayLength;
+    public GameManager gm;
     
 
 
@@ -45,6 +46,8 @@ public class Movement : MonoBehaviour
         {
             rb.gravityScale = 1;
         }
+        gm = FindFirstObjectByType<GameManager>();
+        gm.MonsterEnergyDranken = false;
     }
 
     // Update is called once per frame
@@ -81,9 +84,9 @@ public class Movement : MonoBehaviour
         }
         
         trans.Translate(new Vector3(xVector, yVector, 0));
+
         
-        
-        
+
 
 
     }
